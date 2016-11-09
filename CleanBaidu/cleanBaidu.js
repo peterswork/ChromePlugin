@@ -1,34 +1,38 @@
 function removeAd(){
 	removeSouceAd();
-	removeAjaxInsertAd();
+	initMutationObserver();
 }
 
 function removeSouceAd(){
-	$("div[id*='00']").not(".result").not(".result-op").remove();
+	//$("div[id*='00']").not(".result").not(".result-op").remove();
+	$('#content_left').children().not('.c-container').hide();
 }
 
-function removeAjaxInsertAd(){
-	console.info("begin bind");
-	//#content_left
-	$("body").bind("DOMSubtreeModified",function(){
-		console.info("bind still alive");
-		deleteAdNode();
-	});		
+function initMutationObserver(){
+	
+	//var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+	
+	var mutation = new MutationObserver(function(mutations){
+		mutations.map(function(mutation){
+			if(mutation.addedNodes != null){
+				if(mutation.addedNodes.length != 0){
+					deleteAdNode();
+				}
+			}
+		});
+	});
+		
+	var config = { attributes: true, childList: true, characterData: true , subtree : true };
+	mutation.observe(document.body,config);
 }
 
 function deleteAdNode(){
-	$("div[id*='00']").not(".result").not(".result-op").hide();
+	$('#content_left').children().not('.c-container').hide();
 	$("div[id=1]").children(".f13").children("span[class=m]").parent().parent().hide();
 }
 
 function main(){
-	//printNowDocument();
 	removeAd();
-}
-
-function printNowDocument(){
-	console.log("this is a test");
-	console.log(document.body);
 }
 
 main();

@@ -4,21 +4,8 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function(details){
 	}
 });
 
-
-/*chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab){
-	main(tab);
-});*/
-
-function main(tab){
-	if(isLeagalUrl(tab.url)){
-		if(tab.status == 'complete'){
-			dealDocument();
-		}
-	}
-}
-
 function isLeagalUrl(url){
-	var reg = /^(https:\/\/www\.baidu\.com\/s\?)/;
+	var reg = /^(https:\/\/www\.baidu\.com)/;
 	if(reg.test(url)){
 		return true;
 	}else{
