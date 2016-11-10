@@ -3,7 +3,7 @@
 
   "name": "ClearBaidu",
   "description": "block the baidu ads",
-  "version": "0.9.0",
+  "version": "0.9.1",
 
   "browser_action": {
     "default_icon": "icon.png"
@@ -17,5 +17,8 @@
   
   "background": {
     "scripts": ["background.js"]
-  }
+  },
+  
+  "short_name": "ClearBaidu"
+  
 }
