@@ -31,8 +31,8 @@ function deleteAdNode(){
 	$("div[id=1]").children(".f13").children("span[class=m]").parent().parent().hide();
 }
 
-function main(){
-	removeAd();
-}
 
-main();
+removeAd();
+
+
+
